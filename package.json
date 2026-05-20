@@ -43,7 +43,8 @@
   },
   "npmClient": "yarn",
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "apps/*"
   ],
   "scripts": {
     "commit": "git-cz",
