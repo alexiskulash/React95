@@ -26,11 +26,12 @@ export type AlertProps = ModalProps & {
   message: string;
   hasSound?: boolean;
   type?: AlertType;
+  closeAlert?: () => void;
 };
 
 export const Alert = forwardRef<HTMLDivElement, AlertProps>(
   (
-    { type = 'error', message, hasSound = false, dragOptions, ...rest },
+    { type = 'error', message, hasSound = false, dragOptions, closeAlert, ...rest },
     ref,
   ) => {
     useEffect(() => {
@@ -55,7 +56,7 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
           },
           ...dragOptions,
         }}
-        buttons={[{ value: 'OK', onClick: () => {} }]}
+        buttons={[{ value: 'OK', onClick: () => closeAlert?.() }]}
         hasWindowButton={false}
         buttonsAlignment={'center'}
         {...rest}
