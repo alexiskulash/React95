@@ -28,6 +28,15 @@ export default {
     name: '@storybook/react-vite',
     options: {},
   },
+  async viteFinal(config) {
+    return {
+      ...config,
+      optimizeDeps: {
+        ...config.optimizeDeps,
+        force: true, // Forces dependency pre-bundling on every startup
+      },
+    };
+  },
   docs: {
     autodocs: 'tag',
   },
